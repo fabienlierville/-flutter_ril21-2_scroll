@@ -107,6 +107,7 @@ class _PageListViewState extends State<PageListView> {
                   setState(() {
                     activites.removeAt(index);
                   });
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("${activite.nom} a bien été supprimée")));
                 },
                 background: Container(
                   color: Colors.red,
