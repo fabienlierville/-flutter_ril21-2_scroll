@@ -58,7 +58,18 @@ class _PageListViewState extends State<PageListView> {
   void suite(){
     print("Position = ${activiteController.position.pixels} | Taille Max = ${activiteController.position.maxScrollExtent}");
 
+    if(activiteController.position.pixels >= activiteController.position.maxScrollExtent * 0.95){
+      List<Activite> shuffleActivite = activites;
+      shuffleActivite.shuffle();
 
+      setState(() {
+        activites.add(shuffleActivite[0]);
+        activites.add(shuffleActivite[1]);
+        activites.add(shuffleActivite[2]);
+        activites.add(shuffleActivite[3]);
+        activites.add(shuffleActivite[4]);
+      });
+    }
 
   }
 
