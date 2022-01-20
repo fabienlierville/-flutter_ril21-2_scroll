@@ -100,17 +100,45 @@ class _PageListViewState extends State<PageListView> {
             },
             itemBuilder: (context, index){
               Activite activite = activites[index];
-              return ListTile(
-                title: Text("Activite:"),
-                subtitle: Text(activite.nom),
-                trailing: Icon(activite.icone),
-                leading: IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: (){
-                    setState(() {
-                      activites[index].nom = "Toto";
-                    });
-                  },
+              return Dismissible(
+                key: Key(activite.nom),
+                onDismissed: (DismissDirection direction){
+                  print(direction);
+                  setState(() {
+                    activites.removeAt(index);
+                  });
+                },
+                background: Container(
+                  color: Colors.red,
+                  child: Row(
+                    children: [
+                      Icon(Icons.delete, color: Colors.white,),
+                      Text("Supprimer")
+                    ],
+                  ),
+                ),
+                secondaryBackground:Container(
+                  color: Colors.green,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text("Archiver"),
+                      Icon(Icons.folder, color: Colors.white,),
+                    ],
+                  ),
+                ) ,
+                child: ListTile(
+                  title: Text("Activite:"),
+                  subtitle: Text(activite.nom),
+                  trailing: Icon(activite.icone),
+                  leading: IconButton(
+                    icon: Icon(Icons.edit),
+                    onPressed: (){
+                      setState(() {
+                        activites[index].nom = "Toto";
+                      });
+                    },
+                  ),
                 ),
               );
             },
