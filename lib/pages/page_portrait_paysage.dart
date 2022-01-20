@@ -77,6 +77,9 @@ class _PagePortraitPaysageState extends State<PagePortraitPaysage> {
 
   @override
   Widget build(BuildContext context) {
+    Orientation orientation = MediaQuery.of(context).orientation;
+    print(orientation);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Portrait / Paysage"),
@@ -85,7 +88,12 @@ class _PagePortraitPaysageState extends State<PagePortraitPaysage> {
         child: Scrollbar(
           controller: activiteController,
           isAlwaysShown: true,
-          child: ActiviteList(
+          child: (orientation == Orientation.portrait)
+          ? ActiviteList(
+              activites: activites,
+              activiteController: activiteController,
+            )
+          : ActiviteGrid(
             activites: activites,
             activiteController: activiteController,
           ),

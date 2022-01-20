@@ -10,7 +10,7 @@ class ActiviteGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5),
       itemCount: activites.length,
       controller: activiteController,
       itemBuilder: (context, index){
