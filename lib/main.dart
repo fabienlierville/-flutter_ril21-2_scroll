@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scroll/pages/page_grid_view.dart';
 import 'package:scroll/pages/page_list_view.dart';
+import 'package:scroll/pages/page_portrait_paysage.dart';
 import 'package:scroll/pages/page_single_child_scroll.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PageGridView(),
+      home: const PagePortraitPaysage(),
     );
   }
 }
