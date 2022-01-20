@@ -83,64 +83,16 @@ class _PageGridViewState extends State<PageGridView> {
         child: Scrollbar(
           controller: activiteController,
           isAlwaysShown: true,
-          child: ListView.separated(
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             itemCount: activites.length,
             controller: activiteController,
-            separatorBuilder: (context, index){
-              if(index%10==0){
-                return Container(
-                  height: 100,
-                  color: Colors.red,
-                  child: Text("Publicité"),
-                  alignment: Alignment.center,
-                );
-              }
-              return Divider();
-
-            },
             itemBuilder: (context, index){
               Activite activite = activites[index];
-              return Dismissible(
-                key: Key(activite.nom),
-                onDismissed: (DismissDirection direction){
-                  print(direction);
-                  setState(() {
-                    activites.removeAt(index);
-                  });
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("${activite.nom} a bien été supprimée")));
-                },
-                background: Container(
-                  color: Colors.red,
-                  child: Row(
-                    children: [
-                      Icon(Icons.delete, color: Colors.white,),
-                      Text("Supprimer")
-                    ],
-                  ),
-                ),
-                secondaryBackground:Container(
-                  color: Colors.green,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text("Archiver"),
-                      Icon(Icons.folder, color: Colors.white,),
-                    ],
-                  ),
-                ) ,
-                child: ListTile(
-                  title: Text("Activite:"),
-                  subtitle: Text(activite.nom),
-                  trailing: Icon(activite.icone),
-                  leading: IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: (){
-                      setState(() {
-                        activites[index].nom = "Toto";
-                      });
-                    },
-                  ),
-                ),
+              return GridTile(
+                  header: Text("Activité", textAlign: TextAlign.center),
+                child: Icon(activite.icone, size: 40,),
+                footer: Text(activite.nom, textAlign: TextAlign.center,style: TextStyle(color: Colors.blue, fontSize: 20),),
               );
             },
           ),
