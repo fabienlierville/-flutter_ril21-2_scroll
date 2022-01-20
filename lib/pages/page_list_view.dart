@@ -51,6 +51,7 @@ class _PageListViewState extends State<PageListView> {
 
   @override
   void initState() {
+
     activiteController.addListener(suite);
     super.initState();
   }

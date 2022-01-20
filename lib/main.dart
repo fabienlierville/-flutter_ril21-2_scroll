@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:scroll/pages/page_grid_view.dart';
 import 'package:scroll/pages/page_list_view.dart';
 import 'package:scroll/pages/page_portrait_paysage.dart';
 import 'package:scroll/pages/page_single_child_scroll.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp
+  ]);
+
   runApp(const MyApp());
 }
 
