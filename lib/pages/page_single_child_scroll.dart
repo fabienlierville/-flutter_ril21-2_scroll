@@ -9,7 +9,7 @@ class PageSingleChildScroll extends StatelessWidget {
       appBar: AppBar(
         title: Text("Single Child Scroll"),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(height: 100,color: Colors.red,),
