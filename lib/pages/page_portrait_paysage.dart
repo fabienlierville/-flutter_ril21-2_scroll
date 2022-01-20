@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scroll/models/activite.dart';
+import 'package:scroll/widgets/activite_grid.dart';
 
 class PagePortraitPaysage extends StatefulWidget {
   const PagePortraitPaysage({Key? key}) : super(key: key);
@@ -83,18 +84,9 @@ class _PagePortraitPaysageState extends State<PagePortraitPaysage> {
         child: Scrollbar(
           controller: activiteController,
           isAlwaysShown: true,
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-            itemCount: activites.length,
-            controller: activiteController,
-            itemBuilder: (context, index){
-              Activite activite = activites[index];
-              return GridTile(
-                  header: Text("Activité", textAlign: TextAlign.center),
-                child: Icon(activite.icone, size: 40,),
-                footer: Text(activite.nom, textAlign: TextAlign.center,style: TextStyle(color: Colors.blue, fontSize: 20),),
-              );
-            },
+          child: ActiviteGrid(
+            activites: activites,
+            activiteController: activiteController,
           ),
         ) ,
       ),
