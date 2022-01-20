@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scroll/models/activite.dart';
 import 'package:scroll/widgets/activite_grid.dart';
+import 'package:scroll/widgets/activite_list.dart';
 
 class PagePortraitPaysage extends StatefulWidget {
   const PagePortraitPaysage({Key? key}) : super(key: key);
@@ -84,7 +85,7 @@ class _PagePortraitPaysageState extends State<PagePortraitPaysage> {
         child: Scrollbar(
           controller: activiteController,
           isAlwaysShown: true,
-          child: ActiviteGrid(
+          child: ActiviteList(
             activites: activites,
             activiteController: activiteController,
           ),
