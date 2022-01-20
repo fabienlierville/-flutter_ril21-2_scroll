@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scroll/models/activite.dart';
 
 class PageListView extends StatefulWidget {
   const PageListView({Key? key}) : super(key: key);
@@ -8,6 +9,44 @@ class PageListView extends StatefulWidget {
 }
 
 class _PageListViewState extends State<PageListView> {
+  List<Activite> activites = [
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Jeux", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Jeux", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Jeux", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Jeux", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Jeux", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Jeux", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Jeux", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +54,25 @@ class _PageListViewState extends State<PageListView> {
         title: Text("ListView"),
       ),
       body: Center(
-
+        child: ListView.builder(
+          itemCount: activites.length,
+          itemBuilder: (context, index){
+            Activite activite = activites[index];
+            return ListTile(
+              title: Text("Activite:"),
+              subtitle: Text(activite.nom),
+              trailing: Icon(activite.icone),
+              leading: IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: (){
+                  setState(() {
+                    activites[index].nom = "Toto";
+                  });
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
