@@ -80,26 +80,42 @@ class _PageListViewState extends State<PageListView> {
         title: Text("ListView"),
       ),
       body: Center(
-        child: ListView.builder(
-          itemCount: activites.length,
+        child: Scrollbar(
           controller: activiteController,
-          itemBuilder: (context, index){
-            Activite activite = activites[index];
-            return ListTile(
-              title: Text("Activite:"),
-              subtitle: Text(activite.nom),
-              trailing: Icon(activite.icone),
-              leading: IconButton(
-                icon: Icon(Icons.edit),
-                onPressed: (){
-                  setState(() {
-                    activites[index].nom = "Toto";
-                  });
-                },
-              ),
-            );
-          },
-        ),
+          isAlwaysShown: true,
+          child: ListView.separated(
+            itemCount: activites.length,
+            controller: activiteController,
+            separatorBuilder: (context, index){
+              if(index%10==0){
+                return Container(
+                  height: 100,
+                  color: Colors.red,
+                  child: Text("Publicité"),
+                  alignment: Alignment.center,
+                );
+              }
+              return Divider();
+
+            },
+            itemBuilder: (context, index){
+              Activite activite = activites[index];
+              return ListTile(
+                title: Text("Activite:"),
+                subtitle: Text(activite.nom),
+                trailing: Icon(activite.icone),
+                leading: IconButton(
+                  icon: Icon(Icons.edit),
+                  onPressed: (){
+                    setState(() {
+                      activites[index].nom = "Toto";
+                    });
+                  },
+                ),
+              );
+            },
+          ),
+        ) ,
       ),
     );
   }
